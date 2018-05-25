@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui">
+	<title>Document</title>
+	<style>
+	*{padding:0;margin:0;}
+	body{background:#000}
+	.maxBox{width:7.5rem;background:#fff;}
+	#navTop{width:100%;height:0.8rem;line-height:0.8rem;position:fixed;top:0;left:0;background:#f1f1f1;z-index:10}
+	#navTop h3{text-align:center;font-size:0.3rem;font-weight:500;color:#8e8e8e;}
+	.folder{background:url('https://raw.githubusercontent.com/lixianbin1/Note/master/src/img/folder.png');width:0.4rem;height:0.4rem;position:absolute;top:0.2rem;left:0.2rem;background-size:100%}
+	.menu{background:url('https://raw.githubusercontent.com/lixianbin1/Note/master/src/img/menu.png');width:0.4rem;height:0.4rem;position:absolute;top:0.2rem;right:0.2rem;background-size:100%}
+	#add{width:0.8rem;height:0.8rem;position:fixed;bottom:0.4rem;right:0.4rem;background:url('https://raw.githubusercontent.com/lixianbin1/Note/master/src/img/add.png');background-size:100%}
+	</style>
+</head>
+	<script>
+	document.documentElement.style.fontSize = document.documentElement.clientWidth /7.5 + 'px';
+	window.onresize=function(){document.documentElement.style.fontSize = document.documentElement.clientWidth /7.5 + 'px'}
+	</script>
+<body ng-app="note" ng-controller="noteCtrl">
+	<div class="maxBox">
+	    <div id="navTop">
+	    	<h3 ng-bind="title" ng-init="title='便签'"></h3>
+	    	<i class="folder"></i>
+	    	<i class="menu"></i>
+	    </div>
+		<div id="add" v-on:click="add"></div>
+		<div id="sentBox" class="scrollbar">
+			
+		</div>
+    <!--
+    <div class="search">
+      <div class="searBox">
+        <input id="searIn" v-model="message" placeholder="">
+        <i class="magn"></i>
+      </div>
+    </div>
+    <div id="sentBox">
+      <div style="">
+        <div v-if="(index % 2) == 0" class="cex" v-for="(data,index) in datali" v-on:click="go(data.id,index)" v-on:touchstart="start(index)" v-on:touchend="end()" v-bind:class="{seleced:data.close}">
+          <p class="teti">{{data.title}}</p>
+          <p class="cont">{{data.conten}}</p>
+          <span class="timex">{{data.month}} {{data.time}}</span>
+          <span v-if="select" class="select" ></span>
+        </div>
+      </div>
+      <div style="">
+        <div v-if="(index % 2) == 1" class="cex" v-for="(data,index) in datali" v-on:click="go(data.id,index)" v-on:touchstart="start(index)" v-on:touchend="end()" v-bind:class="{seleced:data.close}">
+          <p class="teti">{{data.title}}</p>
+          <p class="cont">{{data.conten}}</p>
+          <span class="timex">{{data.month}} {{data.time}}</span>
+          <span v-if="select" class="select" ></span>
+        </div>
+      </div>
+    </div>
+    <div v-if="select" class="close_bottom">
+      <div class="close_click" v-on:click="remove()">删除</div>
+    </div> -->
+	</div>
+	 
+	<script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+	<!-- <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.js"></script> -->
+	<script>
+	var note=angular.module("note",[])
+	note.controller("noteCtrl",function($scope){
+
+	})
+	</script>
+</body>
+</html>
