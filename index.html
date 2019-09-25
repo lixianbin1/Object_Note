@@ -1,57 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="note">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui">
-	<title>Document</title>
-	<style>
-	*{padding:0;margin:0;}
-	body{background:#000}
-	.maxBox{width:7.5rem;background:#fff;}
-	#navTop{width:100%;height:0.8rem;line-height:0.8rem;position:fixed;top:0;left:0;background:#f1f1f1;z-index:10}
-	#navTop h3{text-align:center;font-size:0.3rem;font-weight:500;color:#8e8e8e;}
-	.folder{background:url('https://raw.githubusercontent.com/lixianbin1/Note/master/src/img/folder.png');width:0.4rem;height:0.4rem;position:absolute;top:0.2rem;left:0.2rem;background-size:100%}
-	.menu{background:url('https://raw.githubusercontent.com/lixianbin1/Note/master/src/img/menu.png');width:0.4rem;height:0.4rem;position:absolute;top:0.2rem;right:0.2rem;background-size:100%}
-	#add{width:0.8rem;height:0.8rem;position:fixed;bottom:0.4rem;right:0.4rem;background:url('https://raw.githubusercontent.com/lixianbin1/Note/master/src/img/add.png');background-size:100%}
-	</style>
-</head>
-	<script>
-	document.documentElement.style.fontSize = document.documentElement.clientWidth /7.5 + 'px';
-	window.onresize=function(){document.documentElement.style.fontSize = document.documentElement.clientWidth /7.5 + 'px'}
-	</script>
-<body ng-controller="noteCtrl">
-	<div class="maxBox" ng-view>
-	    <div id="navTop">
-	    	<h3 ng-bind="title" ng-init="title='便签'"></h3>
-	    	<i class="folder"></i>
-	    	<i class="menu"></i>
-	    </div>
-		<div id="add" v-on:click="add"></div>
-		<div id="sentBox" class="scrollbar">
-			
-		</div>
-
-	</div>
-	 
-	<script src="https://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.js"></script>
-	<script src="https://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
-
-	<!-- <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.js"></script> -->
-	<!-- <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.min.js"></script> -->
-	<script>
-	var note=angular.module("note",['ngRoute'])
-	note.controller("noteCtrl",function($scope,$route){
-		$scope.$route = $route;
-	})
-	note.config(['$routeProvider', function($routeProvider){
-        $routeProvider
-        .when('/',{
-        	templateUrl:"template/homePage/homePage.html",
-        })
-        .when('/pages1',{template:'这是电脑分类页面'})
-        .when('/pages2',{template:'这是打印机页面'})
-        .otherwise({redirectTo:'/'});
-    }]);
-	</script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="./Demo/favicon.ico"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <link rel="manifest" href="./Demo/manifest.json"/>
+    <title>React App</title>
+    <link href="./Demo/static/css/main.76453d45.chunk.css" rel="stylesheet">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>!function(l){function e(e){for(var r,t,n=e[0],o=e[1],u=e[2],f=0,i=[];f<n.length;f++)t=n[f],p[t]&&i.push(p[t][0]),p[t]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(l[r]=o[r]);for(s&&s(e);i.length;)i.shift()();return c.push.apply(c,u||[]),a()}function a(){for(var e,r=0;r<c.length;r++){for(var t=c[r],n=!0,o=1;o<t.length;o++){var u=t[o];0!==p[u]&&(n=!1)}n&&(c.splice(r--,1),e=f(f.s=t[0]))}return e}var t={},p={1:0},c=[];function f(e){if(t[e])return t[e].exports;var r=t[e]={i:e,l:!1,exports:{}};return l[e].call(r.exports,r,r.exports,f),r.l=!0,r.exports}f.m=l,f.c=t,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(r,e){if(1&e&&(r=f(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var n in r)f.d(t,n,function(e){return r[e]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="./Demo/";var r=window.webpackJsonp=window.webpackJsonp||[],n=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=n;a()}([])</script>
+    <script src="./Demo/static/js/2.199fdb98.chunk.js"></script>
+    <script src="./Demo/static/js/main.4930dec7.chunk.js"></script>
+  </body>
 </html>
