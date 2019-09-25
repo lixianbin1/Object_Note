@@ -1,3 +1,2 @@
-# Angular_Note
-This is a memorandum, a angular project
-https://lixianbin1.github.io/Angular_Note/
+# Object_Note
+一个跟备忘录模组有关的仓库，可能也会保存一些其他的东西
