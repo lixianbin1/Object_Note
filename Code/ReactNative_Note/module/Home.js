@@ -6,6 +6,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      netList:'便签'
       ulist:[],
     };
   }
@@ -13,7 +14,8 @@ class Home extends React.Component {
     console.log(this.props)
   }
   init(){ //初始化数据 通过存储的数据来判断 文件夹及存储的内存
-
+    let init=localStorage.getItem('notelist')
+    
       // ulist:[
       //   {title:'所有便签',key:'便签',}
       //   {title:'废纸篓',key:'废纸篓',}
@@ -22,25 +24,39 @@ class Home extends React.Component {
   Changeheader(){
     console.log()
   }
+  openHeader(){
+    let open=this.state.headOpen
+    if(open){
+      this.setState({headOpen:false})
+    }else{
+      this.setState({headOpen:true})
+    }
+  }
   closeHeader(){
+    this.setState({headOpen:false})
+  }
+  selectHeader(){
 
   }
-  render() {
+  render(){
+    let open=this.state.headOpen
   return(
     <View style={styles.home}>
-
-        <View onPress={this.closeHeader()} style={{position:'absolute',width:'100%',height:'100%',opacity:0.3,backgroundColor:'#000',zIndex:1}}></View>
+        {this.state.headOpen?
+        <View onPress={this.closeHeader()} style={{position:'absolute',width:'100%',height:'100%',opacity:0.3,backgroundColor:'#000',zIndex:1}}></View>:'';}
 
         <View style={styles.header}>
           <View style={{flex:1,}}></View>
+
           <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
-            <TouchableWithoutFeedback >
+            <TouchableWithoutFeedback onPress={this.openHeader()}>
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',padding:5,}}>
               <Text style={{fontSize:15}}>便签</Text>
               <Image style={{width:15,height:15,}} source={require('../static/images/icon/down.png')}/>
             </View>
             </TouchableWithoutFeedback>
           </View>
+
           <View style={{flex:1,justifyContent:'center',alignItems:'flex-end',}}>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Setting')}>
             <View style={{padding:5}}>
@@ -49,12 +65,13 @@ class Home extends React.Component {
             </TouchableWithoutFeedback>
           </View>
         </View>
-
+        
+        {this.state.headOpen?
         <View style={{backgroundColor:'#fff',borderTopWidth:0.5,borderColor:'#ccc',zIndex:1,}}>
-          <Text style={{height:50,lineHeight:50,borderColor:'#ccc',borderBottomWidth:0.5,marginLeft:30,marginRight:30,}}>所有便签</Text>
+          <Text onPress={this.selectHeader()} style={{height:50,lineHeight:50,borderColor:'#ccc',borderBottomWidth:0.5,marginLeft:30,marginRight:30,}}>所有便签</Text>
           <Text style={{height:50,lineHeight:50,borderColor:'#ccc',borderBottomWidth:0.5,marginLeft:30,marginRight:30,}}>废纸篓</Text>
           <Text style={{height:50,lineHeight:50,textAlign:'center',marginLeft:30,marginRight:30,}}>新建文件夹</Text>
-        </View>
+        </View>:'';}
 
       <View style={{flex:1,}}>
         <Text>Home</Text>
