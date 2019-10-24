@@ -1,20 +1,23 @@
 import React from 'react'
+import {TitleList} from '../actions'
 
-const Textarea=({text,date,setText})=>{
+const Textarea=({TData,title,setTData})=>{
+  let string=TitleList[title]
   let ulist=[]
-  if(localStorage.getItem('ulist')){
-    ulist=JSON.parse(localStorage.getItem('ulist'))
+  if(localStorage.getItem(string)){
+    ulist=JSON.parse(localStorage.getItem(string))
   }
   const change=(text)=>{
-    setText(text)
     let object={
-      id:date.getTime(),
+      id:TData.id,
       text:text,
+      time:new Date().getTime(),
     }
+    setTData(object)
     //判断是否是新增
     let ishas=false
     for(let i in ulist){
-      if(ulist[i].id==date.getTime()){
+      if(ulist[i].id==TData.id){
         ishas=true
         ulist[i]=object
         break
@@ -26,7 +29,7 @@ const Textarea=({text,date,setText})=>{
     localStorage.setItem('ulist',JSON.stringify(ulist))
   }
   return(
-    <textarea className="textArea" onChange={(e)=>{change(e.target.value)}} value={text}/>
+    <textarea className="textArea" onChange={(e)=>{change(e.target.value)}} value={TData.text}/>
   )
 }
 

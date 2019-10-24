@@ -5,7 +5,8 @@ import List from '../components/List'
 const mapStateToProps=(state)=>{
   return({
     title:state.Title,
-    select:state.Select,
+    leftdata:state.LeftData,
+    rightdata:state.RightData,
   })
 }
 const mapDispatchToProps=(dispatch)=>{

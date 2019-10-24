@@ -6,7 +6,7 @@ import FooterButton from '../../containers/FooterButton'
 const NoteHome=(props)=>(
   <ResizeBoxes>
     <SelectHeader/>
-    <ContentList/>
+    <ContentList history={props.history}/>
     <FooterButton/>
   </ResizeBoxes>
 )

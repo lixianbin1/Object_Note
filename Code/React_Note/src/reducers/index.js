@@ -32,10 +32,26 @@ const Select=(state=false,action)=>{
       return state
   }
 }
+const seleBox=(state=false,action)=>{
+  switch(action.type){
+    case 'selectBox':
+      return action.select
+    default:
+      return state
+  }
+}
 const Text=(state='',action)=>{
   switch(action.type){
     case 'setText':
       return action.text
+    default:
+      return state
+  }
+}
+const TData=(state={},action)=>{
+  switch(action.type){
+    case 'setTData':
+      return action.data
     default:
       return state
   }
@@ -48,11 +64,40 @@ const Date=(state='',action)=>{
       return state
   }
 }
+const LeftData=(state=[],action)=>{
+  switch(action.type){
+    case 'setLeft':
+      return action.data
+    default:
+      return state
+  }
+}
+const RightData=(state=[],action)=>{
+  switch(action.type){
+    case 'setRight':
+      return action.data
+    default:
+      return state
+  }
+}
+const DelList=(state=[],action)=>{
+  switch(action.type){
+    case 'delectList':
+      return action.list
+    default:
+      return state
+  }
+}
 export default combineReducers({
   Height,
   Width,
   Title,
   Select,
+  seleBox,
   Text,
   Date,
+  LeftData,
+  RightData,
+  DelList,
+  TData,
 })

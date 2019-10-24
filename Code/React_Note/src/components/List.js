@@ -1,12 +1,24 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import addIco from '../static/images/add.png'
+import ListQueue from '../containers/ListQueue' 
 
-const List=(props)=>{
-console.log(props)
+const List=({text,history,leftdata,rightdata})=>{
   return(
     <div className="Content">
-
+      {text=='废纸篓'?
+        <p>注意！位于废纸篓的便签将在30天后销毁！</p>:''
+      }
+      <div className="canList">
+        {leftdata.map((e)=>(
+          <ListQueue key={e.id} data={e} history={history}/>
+        ))}
+      </div>
+      <div className="canList">
+        {rightdata.map((e)=>(
+          <ListQueue key={e.id} data={e} history={history}/>
+        ))}
+      </div>
       <Link to="./Add" className="Add" ><img src={addIco}/></Link>
     </div>
   )
@@ -14,26 +26,3 @@ console.log(props)
 }
 
 export default List
-
-  // if(props.select){
-  //   return(
-  //     <div className={TiNema}>
-  //       <p className="title" >
-  //         <span className="deleIco" onClick={()=>{cancel()}}><img className="titleIco" src={dele}/></span>
-  //         <span>{Title}</span>
-  //       </p>
-  //     </div>
-  //   )
-  // }else{
-  //   return(
-  //     <div className={TiNema} onClick={()=>{openTitle()}}>
-  //       <p className="title" onClick={(e)=>{e.stopPropagation()}}>
-  //         <span onClick={()=>{openTitle()}}>{Title}<img className="titleIco" src={down}/></span>
-  //         </p>
-  //       <div className="ulist">
-  //         <p onClick={()=>{toPage('Note')}}>便签</p>
-  //         <p onClick={()=>{toPage('Basket')}}>废纸篓</p>
-  //       </div>
-  //     </div>
-  //   )
-  // }

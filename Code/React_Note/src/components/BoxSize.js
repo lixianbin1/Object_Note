@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
-
-const BoxSize=({width,height,setWidth,setHeight,children})=>{
+import {TitleList} from '../actions'
+const BoxSize=({title,width,height,setWidth,setHeight,setLeft,setRight,children})=>{
   const layout=()=>{
     //判断手机及屏幕宽度
     let Width
@@ -16,10 +16,29 @@ const BoxSize=({width,height,setWidth,setHeight,children})=>{
     setHeight(window.innerHeight)
     setWidth(Width)
   }
+  const response=()=>{
+    let list=[],ListL=[],ListR=[]
+    let string=TitleList[title]
+    if(localStorage.getItem(string)){
+      list=JSON.parse(localStorage.getItem(string))
+    }
+    for(let i in list){
+      if(i%2==1){//奇
+        ListR.push(list[i])
+      }else{
+        ListL.push(list[i])
+      }
+    }
+    setLeft(ListL)
+    setRight(ListR)
+  }
   useEffect(()=>{
     layout()
     window.addEventListener('resize',layout)
     return ()=>{window.removeEventListener('resize',layout)}
+  },[])
+  useEffect(()=>{
+    response()
   })
   return(
     <div className="App" style={{width:width,height:height}}>

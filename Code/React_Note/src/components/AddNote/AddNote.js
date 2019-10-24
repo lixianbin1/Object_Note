@@ -1,36 +1,49 @@
 import React,{useState,useEffect} from 'react'
 import {connect} from 'react-redux'
-import {setText} from '../../actions'
+import {setTData} from '../../actions'
 import * as Router from 'react-router-dom'
-import {setDate} from '../../actions'
 import back from '../../asset/images/back.png'
 import ResizeBoxes from '../../containers/ResizeBoxes'
 import ADDText from '../../containers/ADDText'
 
 const mapStateToProps=(state)=>{
   return({
-    text:state.Text,
+    TData:state.TData,
   })
 }
 
 const AddNote=(props)=>{
+  let Time=new Date(props.TData.time)||new Date()
+  let Text=props.TData.text||''
   const [month,setMonth]=useState()//月份
   const [time,setTime]=useState() //时间
   useEffect(()=>{
-    const Time=new Date()
     let Hours,Minus
     let hours=Time.getHours().toString().length
     let minus=Time.getMinutes().toString().length
     hours==2?Hours=Time.getHours():Hours='0'+Time.getHours()
     minus==2?Minus=Time.getMinutes():Minus='0'+Time.getMinutes()
-    props.dispatch(setDate(Time))
     setMonth((Time.getMonth()+1)+'月'+Time.getDate()+'日')
     setTime(Hours+':'+Minus)
+  })
+  useEffect(()=>{
+    createId()
   },[])
-  function callBack(){
-    props.dispatch(setText(''))
+  const createId=()=>{
+    let ID=props.TData.id
+    if(!ID){
+      let date=new Date()
+      let obj={
+        id:date.getTime(),
+        time:date.getTime(),
+        text:'',
+      }
+      props.dispatch(setTData(obj))
+    }
+  }
+  const callBack=()=>{
+    props.dispatch(setTData({}))
     props.history.push('/')
-    // localStorage.removeItem('new')
   }
   return(
     <ResizeBoxes>
@@ -41,7 +54,7 @@ const AddNote=(props)=>{
         <p className="addTime">
           <span>{month}</span>
           <span>{time}</span>
-          <span>{props.text.length}字</span>
+          <span>{Text.length}字</span>
         </p>
       </div>
       <ADDText/>
