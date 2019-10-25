@@ -15,30 +15,31 @@ const Uset=(props)=>{ // 选择框组件
   }
 }
 const Queue=(props)=>{
+  let Timeout
   const [day,setDay]=useState('')
-  const [utrue,setTrue]=useState(false)
+  const [utrue,setTrue]=useState(false) //是否被选中
+  const [isLong,setLong]=useState(false) //是否长按中
   const [cClas,setClas]=useState('') //用于设置选中样式
   const [time,setTime]=useState('00:00')
-
   useEffect(()=>{
     newData()
     newTime()
   })
-  function newData(){ // 判断日期
+  const newData=()=>{ // 判断日期
     const nDate=new Date()
     let a=nDate.getTime(),b=nDate.getDate()
-    let date=parseInt((a - props.data.id)/60000)
-    if(date<1440&&b==new Date(props.data.id).getDate()){
+    let date=parseInt((a - props.data.time)/60000)
+    if(date<1440&&b==new Date(props.data.time).getDate()){
       setDay('')
     }else if(date<10080){
-      setDay(getDay(new Date(props.data.id).getDay()))
+      setDay(getDay(new Date(props.data.time).getDay()))
     }else if(date<525600){
-      setDay((new Date(props.data.id).getMonth()+1)+'月'+new Date(props.data.id).getDate()+'日')
+      setDay((new Date(props.data.time).getMonth()+1)+'月'+new Date(props.data.time).getDate()+'日')
     }else{
       setDay(parseInt(date/525600)+'年前')
     }
   }
-  function newTime(){
+  const newTime=()=>{
     let Time=new Date(props.data.time)
     let Hours,Minus
     let hours=Time.getHours().toString().length
@@ -47,32 +48,45 @@ const Queue=(props)=>{
     minus==2?Minus=Time.getMinutes():Minus='0'+Time.getMinutes()
     setTime(Hours+':'+Minus)
   }
-
   const tclick=()=>{
-    if(props.seleBox){ //是否出现选择框
-      utrue?setTrue(false):setTrue(true)
-      let arr=props.delList
-      if(utrue){
-        let index=arr.indexOf(props.data.id)
-        arr.splict(index,1)
-      }else{
-        arr.push(props.data.id)
-      }
+    if(isLong){
+      setLong(false)
     }else{
-      props.setTData(props.data)
-      props.history.push('/Add')
+      if(props.seleBox){ //是否出现选择框
+        utrue?setTrue(false):setTrue(true)
+        let arr=props.delList.concat()
+        if(utrue){
+          let index=arr.indexOf(props.data.id)
+          arr.splice(index,1)
+        }else{
+          arr.push(props.data.id)
+        }
+        props.delectList(arr)
+      }else{
+        props.setTData(props.data)
+        props.history.push('/Add')
+      }
     }
   }
   const long=()=>{
-    
+    if(!props.seleBox){
+      Timeout=setTimeout(()=>{
+        setLong(true)
+        setTrue(true)
+        props.selectBox(true)
+        let arr=props.delList.concat()
+        arr.push(props.data.id)
+        props.delectList(arr)
+      },500)
+    }
   }
   return(
     <div 
       className={cClas} 
-      // onTouchStart={()=>{long()}} 
-      // onTouchEnd={()=>{clearTimeout(setTime)}}
+      onTouchStart={()=>{long()}} 
+      onTouchEnd={()=>{clearTimeout(Timeout)}}
       onMouseDown={()=>{long()}}
-      // onMouseUp={()=>{clearTimeout(setTime)}}
+      onMouseUp={()=>{clearTimeout(Timeout)}}
       onClick={()=>{tclick()}}
     >
       <p className="listText">{props.data.text}</p>

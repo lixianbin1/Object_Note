@@ -14,18 +14,14 @@ const Textarea=({TData,title,setTData})=>{
       time:new Date().getTime(),
     }
     setTData(object)
-    //判断是否是新增
-    let ishas=false
+    //判断是否存在
     for(let i in ulist){
       if(ulist[i].id==TData.id){
-        ishas=true
-        ulist[i]=object
+        ulist.splice(i,1)
         break
       }
     }
-    if(!ishas){
-      ulist.unshift(object)
-    }
+    ulist.unshift(object)
     localStorage.setItem('ulist',JSON.stringify(ulist))
   }
   return(

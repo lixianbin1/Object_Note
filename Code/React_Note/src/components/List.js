@@ -3,13 +3,14 @@ import {Link} from 'react-router-dom'
 import addIco from '../static/images/add.png'
 import ListQueue from '../containers/ListQueue' 
 
-const List=({text,history,leftdata,rightdata})=>{
+const List=({title,history,leftdata,rightdata})=>{
+  console.log(title)
   return(
     <div className="Content">
-      {text=='废纸篓'?
+      {title=='废纸篓'?
         <p>注意！位于废纸篓的便签将在30天后销毁！</p>:''
       }
-      <div className="canList">
+      <div className="canList" >
         {leftdata.map((e)=>(
           <ListQueue key={e.id} data={e} history={history}/>
         ))}
