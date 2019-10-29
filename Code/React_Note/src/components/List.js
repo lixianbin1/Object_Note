@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 import addIco from '../static/images/add.png'
 import ListQueue from '../containers/ListQueue' 
 
-const List=({title,history,leftdata,rightdata})=>{
-  console.log(title)
+
+const List=({title,seleBox,history,leftdata,rightdata})=>{
   return(
     <div className="Content">
       {title=='废纸篓'?
@@ -20,7 +20,10 @@ const List=({title,history,leftdata,rightdata})=>{
           <ListQueue key={e.id} data={e} history={history}/>
         ))}
       </div>
-      <Link to="./Add" className="Add" ><img src={addIco}/></Link>
+      {title!=='废纸篓'&&seleBox==false?
+        <Link to="./Add" className="Add" ><img src={addIco}/></Link>:
+        <Link to="./Add" className="Add right" ><img src={addIco}/></Link>
+      }
     </div>
   )
 

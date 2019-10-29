@@ -1,11 +1,18 @@
 import React from 'react'
 
+
 const Footer=(props)=>{
   return(
-    <footer>
-      <p className="title" >
-        123
-      </p>
+    <footer className="Delete show">
+      {props.title=="废纸篓"?
+        <p>
+          <span>恢复</span>
+          <span>永久删除</span>
+        </p>:
+        <p>
+          <span>删除</span>
+        </p>
+      }
     </footer>
   )
 

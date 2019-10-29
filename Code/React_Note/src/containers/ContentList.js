@@ -5,6 +5,7 @@ import List from '../components/List'
 const mapStateToProps=(state)=>{
   return({
     title:state.Title,
+    seleBox:state.seleBox,
     leftdata:state.LeftData,
     rightdata:state.RightData,
   })
