@@ -1,16 +1,21 @@
 import {connect} from 'react-redux'
-import {setTitle} from '../actions'
+import {selectBox,delectList,clickDelete} from '../actions'
 import Footer from '../components/Footer'
 
 const mapStateToProps=(state)=>{
   return({
+    seleBox:state.seleBox,
+    delList:state.DelList,
     title:state.Title,
-    select:state.Select,
   })
 }
 const mapDispatchToProps=(dispatch)=>{
   return({
-    setTitle:title=>dispatch(setTitle(title))
+    clickDelete:(data)=>{
+      dispatch(clickDelete(data));
+      dispatch(selectBox(false));
+      dispatch(delectList([]));
+    },
   })
 }
 

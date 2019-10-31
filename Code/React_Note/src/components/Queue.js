@@ -22,9 +22,19 @@ const Queue=(props)=>{
   const [cClas,setClas]=useState('') //用于设置选中样式
   const [time,setTime]=useState('00:00')
   useEffect(()=>{
+    setTrues()
     newData()
     newTime()
   })
+  const setTrues=()=>{ //判断是否选中
+    let arr=props.delList.concat()
+    let index=arr.indexOf(props.data.id)
+    if(index>=0){
+      setTrue(true)
+    }else{
+      setTrue(false)
+    }
+  }
   const newData=()=>{ // 判断日期
     const nDate=new Date()
     let a=nDate.getTime(),b=nDate.getDate()

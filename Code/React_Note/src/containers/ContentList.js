@@ -6,8 +6,8 @@ const mapStateToProps=(state)=>{
   return({
     title:state.Title,
     seleBox:state.seleBox,
-    leftdata:state.LeftData,
-    rightdata:state.RightData,
+    leftdata:state.setLRlist.ListL,
+    rightdata:state.setLRlist.ListR,
   })
 }
 const mapDispatchToProps=(dispatch)=>{

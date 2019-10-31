@@ -22,13 +22,9 @@ export const getDay=(n)=>{
       return '未知'
   }
 }
-export const setHeight=(height)=>({ //高度
-  type:'setHeight',
-  height
-})
-export const setWidth=(width)=>({ //宽度
-  type:'setWidth',
-  width
+export const setUlist=(title)=>({
+  type:'setUlist',
+  title
 })
 export const setTitle=(title)=>({ //目前的标题
   type:'setTitle',
@@ -54,15 +50,18 @@ export const setTData=(data)=>({ //
   type:'setTData',
   data
 })
-export const setLeft=(data)=>({ //左侧的数据
-  type:'setLeft',
-  data
-})
-export const setRight=(data)=>({ //右侧的数据
-  type:'setRight',
-  data
-})
 export const delectList=(list)=>({ //选中的ID列
   type:'delectList',
   list
+})
+export const windowResize=()=>({ //窗口大小调整
+  type:'windowResize',
+})
+export const setLRlist=(name)=>({ //设置两侧数据
+  type:'setLRlist',
+  name,
+})
+export const clickDelete=(data)=>({ //点击下方按钮
+  type:'clickDelete',
+  data,
 })
