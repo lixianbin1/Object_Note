@@ -65,3 +65,13 @@ export const clickDelete=(data)=>({ //点击下方按钮
   type:'clickDelete',
   data,
 })
+export const resotreList=(data)=>({
+  type:'resotreList',
+  data,
+})
+export const modalSwitch=(show,title,content)=>({ //控制Modal的一切
+  type:'modalSwitch',
+  show,
+  title,
+  content,
+})

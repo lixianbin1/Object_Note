@@ -65,22 +65,26 @@ const Ulist=(state=[],action)=>{
   }
 }
 // 根据页面设置窗口宽度大小
-const windowResize=(state={'width':'0px','height':window.innerHeight},action)=>{
+const windows=(state,action)=>{
+  let width
+  const nav=navigator.userAgent
+  const android=/Android|webOS|iPhone|ipod|ipad|BlackBerry/i
+  if(android.test(nav)){
+    width=window.innerWidth
+  }else{
+    width=window.innerHeight/16*9
+  }
+  let obj={
+    height:window.innerHeight,
+    width,
+  }
   switch(action.type){
     case 'windowResize':
-      let width
-      const nav=navigator.userAgent
-      const android=/Android|webOS|iPhone|ipod|ipad|BlackBerry/i
-      if(android.test(nav)){
-        width=window.innerWidth
-      }else{
-        width=window.innerHeight/16*9
-      }
       const fontsize=width<252?252/6.83+'px':width/6.83+'px'
       window.document.documentElement.style.fontSize=fontsize
-      return({width,height:window.innerHeight})
+      return(obj)
     default:
-      return state
+      return(obj)
   }
 }
 // 根据state.title变动而变动的两侧数据
@@ -126,9 +130,28 @@ const clickButton=(state,action)=>{ //删除选中便签事件
   }
   return ''
 }
+// 控制Modal的一切
+const Modal=(state,action)=>{
+  state={
+    'show':false,
+    'title':'删除便签',
+    'content':'确认要删除所选的便签吗？'
+  }
+  switch(action.type){
+    case 'modalSwitch':
+      return({
+        'show':action.show,
+        'title':action.title||state.title,
+        'content':action.content||state.content,
+      })
+    default:
+      return state
+  }
+}
 export default combineReducers({
   Ulist,
-  window:windowResize,
+  Modal, 
+  window:windows,
   setLRlist,
   clickButton,
   Title,
