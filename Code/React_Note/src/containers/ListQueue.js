@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {setText,setDate,setTData,selectBox,delectList} from '../actions'
+import {setText,setDate,setTData,selectBox,delectList,resumeModal2} from '../actions'
 import Queue from '../components/Queue'
 
 const mapStateToProps=(state)=>{
@@ -16,7 +16,8 @@ const mapDispatchToProps=(dispatch)=>{
     setDate:date=>dispatch(setDate(date)),
     setTData:data=>dispatch(setTData(data)),
     selectBox:data=>dispatch(selectBox(data)),
-    delectList:data=>dispatch(delectList(data))
+    delectList:data=>dispatch(delectList(data)),
+    resumeModal:()=>dispatch(resumeModal2)
   })
 }
 

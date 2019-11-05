@@ -73,8 +73,12 @@ const Queue=(props)=>{
         }
         props.delectList(arr)
       }else{
-        props.setTData(props.data)
-        props.history.push('/Add')
+        if(props.title=='废纸篓'){
+          props.resumeModal()
+        }else{
+          props.setTData(props.data)
+          props.history.push('/Add')
+        }
       }
     }
   }
@@ -84,7 +88,7 @@ const Queue=(props)=>{
         setLong(true)
         setTrue(true)
         props.selectBox(true)
-        let arr=props.delList.concat()
+        let arr=props.delList.concat()//
         arr.push(props.data.id)
         props.delectList(arr)
       },500)

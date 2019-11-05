@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {connect} from 'react-redux'
 import {setTData} from '../../actions'
 import * as Router from 'react-router-dom'
-import back from '../../asset/images/back.png'
+import back from '../../static/images/back.png'
 import ResizeBoxes from '../../containers/ResizeBoxes'
 import ADDText from '../../containers/ADDText'
 

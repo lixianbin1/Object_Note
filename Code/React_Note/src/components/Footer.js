@@ -9,11 +9,11 @@ const Footer=(props)=>{
     <footer className={footTitle}>
       {props.title=="废纸篓"?
         <p>
-          <span >恢复</span>
-          <span onClick={()=>{props.modalSwitch(true)}}>永久删除</span>
+          <span onClick={()=>{props.resumeModal()}}>恢复</span>
+          <span onClick={()=>{props.delectModal()}}>永久删除</span>
         </p>:
         <p>
-          <span onClick={()=>{props.modalSwitch(true)}}>删除</span>
+          <span onClick={()=>{props.delectModal()}}>删除</span>
         </p>
       }
     </footer>

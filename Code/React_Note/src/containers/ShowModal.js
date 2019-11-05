@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {selectBox,delectList,clickDelete,modalSwitch} from '../actions'
+import {selectBox,delectList,clickDelete,delectModal,resumeModal,closeModal,setUlist} from '../actions'
 import Modal from '../components/Modal'
 const mapStateToProps=(state)=>{
   return({
@@ -8,13 +8,17 @@ const mapStateToProps=(state)=>{
     title:state.Modal.title,
     content:state.Modal.content,
     delList:state.DelList,
+    fun:state.Modal.function,
   })
 }
 const mapDispatchToProps=(dispatch)=>{
   return({
-    modalSwitch:(show,title,content)=>{dispatch(modalSwitch(show,title,content))},
-    clickDelete:(data)=>{
-      dispatch(clickDelete(data));
+    delectModal:()=>{dispatch(delectModal)},
+    resumeModal:()=>{dispatch(resumeModal)},
+    closeModal:()=>{dispatch(closeModal)},
+    getUlist:title=>{dispatch(setUlist(title))},
+    clickDelete:(data,time)=>{
+      if(data){dispatch(clickDelete(data,time));}
       dispatch(selectBox(false));
       dispatch(delectList([]));
     },

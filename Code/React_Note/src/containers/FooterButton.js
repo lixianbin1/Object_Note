@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {modalSwitch} from '../actions'
+import {delectModal,resumeModal} from '../actions'
 import Footer from '../components/Footer'
 
 const mapStateToProps=(state)=>{
@@ -10,7 +10,8 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
   return({
-    modalSwitch:show=>dispatch(modalSwitch(show))
+    delectModal:()=>dispatch(delectModal),
+    resumeModal:()=>dispatch(resumeModal),
   })
 }
 
