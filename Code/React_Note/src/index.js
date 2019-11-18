@@ -5,6 +5,7 @@ import { createStore } from 'redux'
 import rootReducer from './reducers'
 import App from './components/App'
 import './static/css/common.css';
+import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer)
 render(
@@ -18,4 +19,4 @@ if(module.hot) {
   module.hot.accept(); 
 }
 
-// serviceWorker.unregister();
+serviceWorker.unregister();
