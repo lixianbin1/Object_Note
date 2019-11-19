@@ -1,4 +1,4 @@
-*{padding:0;margin:0;-webkit-tap-highlight-color: rgba(255,0,0,0);-webkit-appearance:none;}
+*{padding:0;margin:0;-webkit-tap-highlight-color: rgba(255,0,0,0);-webkit-appearance:none;-o-user-select:none;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;}
 a,a:link,a:hover,a:active,a:focus{text-decoration:none;color:inherit;}
 ul li{list-style-type:none;}
 img{vertical-align:sub;width:100%;}
@@ -59,7 +59,15 @@ header{height:0.8rem;line-height:0.8rem}
   left: 0.2rem;
   padding: 0 0.2rem;
 }
-
+.menuTitle{
+  position:absolute;
+  right:0.2rem;
+  padding:0 0.2rem;
+}
+.imgIco{
+  width: 0.3rem;
+  vertical-align: sub;
+}
 .open .ulist{
   transition:all 0.3s;
   top: 0.8rem;
@@ -246,3 +254,26 @@ header{height:0.8rem;line-height:0.8rem}
   color:#1296db;
   border-top:1px solid #ececec;
 }
+
+/*Menu*/
+.menuList{
+  position: absolute;
+  width: 1.5rem;
+  background: #fff;
+  top: 0.2rem;
+  right: 0.2rem;
+  border-radius: 4px;
+  z-index: 2;
+  padding: 0 0.2rem;
+}
+.menuList li{
+  height: 0.5rem;
+  line-height: 0.5rem;
+  padding: 0.1rem 0px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.menuList li:last-child{
+  border-bottom:0px;
+}
+.menu.hide{display:none}

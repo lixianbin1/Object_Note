@@ -110,3 +110,9 @@ export const resumeModal2={
 export const closeModal={ //关闭modal
   type:'closeModal',
 }
+export const openMenu={ //开启菜单
+  type:'openMenu',
+}
+export const closeMenu={
+  type:'closeMenu',
+}

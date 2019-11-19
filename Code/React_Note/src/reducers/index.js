@@ -130,6 +130,16 @@ const clickButton=(state,action)=>{ //删除选中便签事件
   }
   return ''
 }
+const Menu=(state=false,action)=>{
+  switch(action.type){
+    case 'openMenu':
+      return true
+    case 'closeMenu':
+      return false
+    default:
+      return state
+  }
+}
 // 控制Modal的一切
 const Modal=(state,action)=>{
   if(state==undefined){
@@ -174,7 +184,8 @@ const Modal=(state,action)=>{
 }
 export default combineReducers({
   Ulist,
-  Modal, 
+  Modal,
+  Menu,
   window:windows,
   clickButton,
   Title,
