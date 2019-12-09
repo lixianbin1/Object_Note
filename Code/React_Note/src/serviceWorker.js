@@ -31,30 +31,30 @@ export function register(config) {
       return;
     }
 
-var _beforeInstallPrompt;
-if ( "onbeforeinstallprompt" in window ) {
-  window.addEventListener( "beforeinstallprompt", beforeInstallPrompt );
-}else{
-  let dom=document.getElementsByClassName('menuTitle')[0]
-  dom.style.display="none"
-}
-function beforeInstallPrompt( evt ) {
-  evt.preventDefault();
-  _beforeInstallPrompt = evt;
-}
-let menu=document.getElementById('addApp')
-menu.addEventListener('click',e=>{
-  _beforeInstallPrompt.prompt()
-  _beforeInstallPrompt.userChoice
-  .then(choiceResult => {
-    if(choiceResult.outcome === 'accepted') {
-      console.log('user accepted A2HS prompt')
-    } else {
-      console.log('user dismissed A2HS prompt')
-    }
-    _beforeInstallPrompt = null
-  })
-})
+// var _beforeInstallPrompt;
+// if ( "onbeforeinstallprompt" in window ) {
+//   window.addEventListener( "beforeinstallprompt", beforeInstallPrompt );
+// }else{
+//   let dom=document.getElementsByClassName('menuTitle')[0]
+//   dom.style.display="none"
+// }
+// function beforeInstallPrompt( evt ) {
+//   evt.preventDefault();
+//   _beforeInstallPrompt = evt;
+// }
+// let menu=document.getElementById('addApp')
+// menu.addEventListener('click',e=>{
+//   _beforeInstallPrompt.prompt()
+//   _beforeInstallPrompt.userChoice
+//   .then(choiceResult => {
+//     if(choiceResult.outcome === 'accepted') {
+//       console.log('user accepted A2HS prompt')
+//     } else {
+//       console.log('user dismissed A2HS prompt')
+//     }
+//     _beforeInstallPrompt = null
+//   })
+// })
 
 
     window.addEventListener('load', () => {

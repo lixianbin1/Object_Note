@@ -97,9 +97,11 @@ const Queue=(props)=>{
   return(
     <div 
       className={cClas} 
-      onTouchStart={()=>{long()}} 
+      onTouchStart={()=>{long()}}
+      onTouchMove={()=>{clearTimeout(Timeout)}}
       onTouchEnd={()=>{clearTimeout(Timeout)}}
       onMouseDown={()=>{long()}}
+      onMouseMove={()=>{clearTimeout(Timeout)}}
       onMouseUp={()=>{clearTimeout(Timeout)}}
       onClick={()=>{tclick()}}
     >

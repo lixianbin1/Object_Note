@@ -21,7 +21,7 @@ const Header=({title,seleBox,delList,setTitle,delectList,selectBox,openMenu})=>{
           </p>:
           <p className="title" onClick={(e)=>{e.stopPropagation()}}>
             <span onClick={()=>{openTitle()}}>{title}<img className="titleIco" src={down}/></span>
-            <span className="menuTitle" onClick={()=>{openMenu()}}><img className="imgIco" src={menu}/></span>
+            {/*<span className="menuTitle" onClick={()=>{openMenu()}}><img className="imgIco" src={menu}/></span>*/}
           </p>}
         <div className="ulist">
           <p onClick={()=>{setTitle('便签')}}>便签</p>
