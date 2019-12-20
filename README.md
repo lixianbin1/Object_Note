@@ -10,7 +10,7 @@
 
 Web 版本：已完成0.8版本，已放弃(被替代)
 
-React 版本：目前已完成1.5版本
+React 版本：目前已完成1.2版本
 
   地址：https://github.com/lixianbin1/Object_Note/tree/master/Code/React_Note
 
